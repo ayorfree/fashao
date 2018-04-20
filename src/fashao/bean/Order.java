@@ -3,6 +3,8 @@ package fashao.bean;
 import java.util.Date;
 import java.util.List;
 
+import fashao.dao.OrderDAO;
+
 /**
  * @author ayorfree
  * @create 2018-04-20-下午8:19
@@ -39,7 +41,7 @@ public class Order {
                 desc = "待收货";
                 break;
             case OrderDAO.waitReview:
-                des = "等评价";
+                desc = "等评价";
                 break;
             case OrderDAO.finish:
                 desc="完成";
