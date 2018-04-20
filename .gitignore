@@ -3,8 +3,4 @@
 .idea/vcs.xml
 .idea/workspace.xml
 out/
-src/fashao/comparator/
-src/fashao/dao/
-src/fashao/servlet/
-src/fashao/util/
 web/WEB-INF/classes/
