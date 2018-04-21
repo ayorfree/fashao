@@ -26,7 +26,7 @@ public class BackServletFilter implements Filter {
             return;
         }
 
-        chain.doFilter(req, resp);
+        chain.doFilter(request, response);
     }
 
     public void init(FilterConfig config) throws ServletException {

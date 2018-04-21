@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class DBUtil {
     static String ip = "127.0.0.1";
-    static int prot = 3306;
+    static int port = 3306;
     static String database = "fashao";
     static String encoding = "UTF-8";
     static String loginName = "ayor";
@@ -26,7 +26,7 @@ public class DBUtil {
     }
 
     public static Connection getConnection() throws SQLException {
-        String url = String.format("jdbc:mysql://%s:%d:%s?characterEncoding=%s", ip, prot, database, encoding);
+        String url = String.format("jdbc:mysql://%s:%d/%s?characterEncoding=%s", ip, port, database, encoding);
         return DriverManager.getConnection(url, loginName, password);
     }
 

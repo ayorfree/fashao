@@ -67,7 +67,7 @@ public class CategoryServlet extends BaseBackServlet {
         return "admin/editCategory.jsp";
     }
 
-    public String update(HttpServletRequest request, HttpServletResponse response, Page page) {
+    /* public String update(HttpServletRequest request, HttpServletResponse response, Page page) {
         Map<String, String> params = new HashMap<>();
         InputStream is = super.parseUpload(request, params);
 
@@ -96,8 +96,8 @@ public class CategoryServlet extends BaseBackServlet {
                     fos.flush();
 
                     BufferedImage img = ImageUtil.change2jpg(file);
-                    ImageIO.write(img, "jgp", file);
-                } catch (Exception e) {
+                    ImageIO.write(img, "jpg", file);
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -105,6 +105,48 @@ public class CategoryServlet extends BaseBackServlet {
             e.printStackTrace();
         }
         return "@admin_category_list";
+    }
+
+    */
+
+    public String update(HttpServletRequest request, HttpServletResponse response, Page page) {
+        Map<String,String> params = new HashMap<>();
+        InputStream is = super.parseUpload(request, params);
+        String name= params.get("name");
+        int id = Integer.parseInt(params.get("id"));
+
+        Category c = new Category();
+        c.setId(id);
+        c.setName(name);
+        categoryDAO.update(c);
+
+        File  imageFolder= new File(request.getSession().getServletContext().getRealPath("img/category"));
+        File file = new File(imageFolder,c.getId()+".jpg");
+        file.getParentFile().mkdirs();
+
+        try {
+            if(null!=is && 0!=is.available()){
+                try(FileOutputStream fos = new FileOutputStream(file)){
+                    byte b[] = new byte[1024 * 1024];
+                    int length = 0;
+                    while (-1 != (length = is.read(b))) {
+                        fos.write(b, 0, length);
+                    }
+                    fos.flush();
+                    //通过如下代码，把文件保存为jpg格式
+                    BufferedImage img = ImageUtil.change2jpg(file);
+                    ImageIO.write(img, "jpg", file);
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "@admin_category_list";
+
     }
 
     public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
