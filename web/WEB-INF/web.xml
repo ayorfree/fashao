@@ -27,7 +27,17 @@
         <servlet-name>CategoryServlet</servlet-name>
         <servlet-class>fashao.servlet.CategoryServlet</servlet-class>
     </servlet>
-    
+
+    <servlet>
+        <servlet-name>PropertyServlet</servlet-name>
+        <servlet-class>fashao.servlet.PropertyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PropertyServlet</servlet-name>
+        <url-pattern>/propertyServlet</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>CategoryServlet</servlet-name>
         <url-pattern>/categoryServlet</url-pattern>

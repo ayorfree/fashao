@@ -5,7 +5,8 @@
   Time: 下午4:12
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" isELIgnored="false" contentType="text/html; UTF-8" language="java"  %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" isELIgnored="false"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/admin/adminHeader.jsp"%>
